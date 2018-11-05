@@ -1,0 +1,896 @@
+<html>
+                 <head>
+                   <meta charset="UTF-8">
+                   <meta name = "viewport" content = "width = device-width, initial-scale = 1, maximum-scale = 1">
+                   <style id="style">
+@font-face {
+  font-family: 'Lato';
+  src: url('file:///C:/Users/scott/AppData/Local/boost/app-0.11.10/resources/app/resources/fonts/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
+       url('file:///C:/Users/scott/AppData/Local/boost/app-0.11.10/resources/app/resources/fonts/Lato-Regular.woff') format('woff'), /* Modern Browsers */
+       url('file:///C:/Users/scott/AppData/Local/boost/app-0.11.10/resources/app/resources/fonts/Lato-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+@font-face {
+  font-family: 'Lato';
+  src: url('file:///C:/Users/scott/AppData/Local/boost/app-0.11.10/resources/app/resources/fonts/Lato-Black.woff2') format('woff2'), /* Modern Browsers */
+       url('file:///C:/Users/scott/AppData/Local/boost/app-0.11.10/resources/app/resources/fonts/Lato-Black.woff') format('woff'), /* Modern Browsers */
+       url('file:///C:/Users/scott/AppData/Local/boost/app-0.11.10/resources/app/resources/fonts/Lato-Black.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+}
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url('file:///C:/Users/scott/AppData/Local/boost/app-0.11.10/resources/app/resources/fonts/MaterialIcons-Regular.woff2') format('woff2'),
+       url('file:///C:/Users/scott/AppData/Local/boost/app-0.11.10/resources/app/resources/fonts/MaterialIcons-Regular.woff') format('woff'),
+       url('file:///C:/Users/scott/AppData/Local/boost/app-0.11.10/resources/app/resources/fonts/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+body {
+  font-size: 16px;
+  padding: 15px;
+  font-family: helvetica, arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+body .katex {
+  font: 400 1.2em 'KaTeX_Main';
+  line-height: 1.2em;
+  white-space: initial;
+  text-indent: 0;
+}
+body .katex .mfrac>.vlist>span:nth-child(2) {
+  top: 0 !important;
+}
+body .katex-error {
+  background-color: #f2dede;
+  color: #a64444;
+  padding: 5px;
+  margin: -5px;
+  border-radius: 5px;
+}
+body .flowchart-error,
+body .sequence-error .chart-error {
+  background-color: #f2dede;
+  color: #a64444;
+  padding: 5px;
+  border-radius: 5px;
+  -webkit-box-pack: left;
+  -moz-box-pack: left;
+  -o-box-pack: left;
+  -ms-flex-pack: left;
+  -webkit-justify-content: left;
+  justify-content: left;
+}
+li label.taskListItem {
+  margin-left: -1.8em;
+}
+li label.taskListItem.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+li.taskListItem.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+div.math-rendered {
+  text-align: center;
+}
+.math-failed {
+  background-color: rgba(255,0,0,0.1);
+  color: #d90000;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+sup {
+  position: relative;
+  top: -0.4em;
+  font-size: 0.8em;
+  vertical-align: top;
+}
+sub {
+  position: relative;
+  bottom: -0.4em;
+  font-size: 0.8em;
+  vertical-align: top;
+}
+a {
+  color: #2bac8f;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin: -5px;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  -ms-transition: 0.1s;
+  transition: 0.1s;
+}
+a img {
+  vertical-align: sub;
+}
+a:hover {
+  color: #2eb899;
+  text-decoration: underline;
+  background-color: rgba(255,201,92,0.3);
+}
+a:visited {
+  color: #2bac8f;
+}
+hr {
+  border-top: none;
+  border-bottom: solid 1px #d0d0d0;
+  margin: 15px 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  word-wrap: break-word;
+}
+h1 {
+  font-size: 2.55em;
+  padding-bottom: 0.3em;
+  line-height: 1.2em;
+  border-bottom: solid 1px #d0d0d0;
+  margin: 1em 0 0.44em;
+}
+h1:first-child {
+  margin-top: 0;
+}
+h2 {
+  font-size: 1.75em;
+  padding-bottom: 0.3em;
+  line-height: 1.225em;
+  border-bottom: solid 1px #d0d0d0;
+  margin: 1em 0 0.57em;
+}
+h2:first-child {
+  margin-top: 0;
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43em;
+  margin: 1em 0 0.66em;
+}
+h4 {
+  font-size: 1.25em;
+  line-height: 1.4em;
+  margin: 1em 0 0.8em;
+}
+h5 {
+  font-size: 1em;
+  line-height: 1.4em;
+  margin: 1em 0 1em;
+}
+h6 {
+  font-size: 1em;
+  line-height: 1.4em;
+  margin: 1em 0 1em;
+  color: #777;
+}
+p {
+  line-height: 1.6em;
+  margin: 0 0 1em;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+img {
+  max-width: 100%;
+}
+strong,
+b {
+  font-weight: bold;
+}
+em,
+i {
+  font-style: italic;
+}
+s,
+del,
+strike {
+  text-decoration: line-through;
+}
+u {
+  text-decoration: underline;
+}
+blockquote {
+  border-left: solid 4px #3fb399;
+  margin: 0 0 1em;
+  padding: 0 25px;
+}
+ul {
+  list-style-type: disc;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+ul li {
+  display: list-item;
+}
+ul li.taskListItem {
+  list-style: none;
+}
+ul li p {
+  margin: 0;
+}
+ul>li>ul,
+ul>li>ol {
+  margin: 0;
+}
+ul>li>ul {
+  list-style-type: circle;
+}
+ul>li>ul>li>ul {
+  list-style-type: square;
+}
+ol {
+  list-style-type: decimal;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+ol li {
+  display: list-item;
+}
+ol li p {
+  margin: 0;
+}
+ol>li>ul,
+ol>li>ol {
+  margin: 0;
+}
+code {
+  padding: 0.2em 0.4em;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+  font-size: 1em;
+  text-decoration: none;
+  margin-right: 2px;
+}
+pre {
+  padding: 0.5em !important;
+  border: solid 1px #d1d1d1;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 0 0 1em;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  line-height: 1.4em;
+}
+pre.flowchart,
+pre.sequence,
+pre.chart {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background-color: #fff;
+}
+pre.CodeMirror {
+  height: initial;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+pre.CodeMirror>code {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow-x: auto;
+}
+pre code {
+  background-color: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+pre>span.filename {
+  width: 100%;
+  border-radius: 5px 0px 0px 0px;
+  margin: -8px 100% 8px -8px;
+  padding: 0px 6px;
+  background-color: #777;
+  color: #fff;
+}
+pre>span.lineNumber {
+  display: none;
+  font-size: 1em;
+  padding: 0.5em 0;
+  margin: -0.5em 0.5em -0.5em -0.5em;
+  border-right: 1px solid;
+  text-align: right;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+pre>span.lineNumber.CodeMirror-gutters {
+  position: initial;
+  top: initial;
+  left: initial;
+  min-height: 0 !important;
+}
+pre>span.lineNumber>span {
+  display: block;
+  padding: 0 0.5em 0;
+}
+table {
+  display: block;
+  width: 100%;
+  margin: 0 0 1em;
+  overflow-x: auto;
+}
+table thead tr {
+  background-color: #fff;
+}
+table thead th {
+  border-style: solid;
+  padding: 6px 13px;
+  line-height: 1.6;
+  border-width: 1px 0 2px 1px;
+  border-color: #d0d0d0;
+  font-weight: bold;
+}
+table thead th:last-child {
+  border-right: solid 1px #d0d0d0;
+}
+table tbody tr:nth-child(2n + 1) {
+  background-color: #f9f9f9;
+}
+table tbody tr:nth-child(2n) {
+  background-color: #fff;
+}
+table tbody td {
+  border-style: solid;
+  padding: 6px 13px;
+  line-height: 1.6;
+  border-width: 0 0 1px 1px;
+  border-color: #d0d0d0;
+}
+table tbody td:last-child {
+  border-right: solid 1px #d0d0d0;
+}
+kbd {
+  background-color: #fafbfc;
+  border: solid 1px #d0d0d0;
+  border-bottom-color: #888;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 -1px 0 #959da5;
+  box-shadow: inset 0 -1px 0 #959da5;
+  display: inline-block;
+  font-size: 0.8em;
+  line-height: 1;
+  padding: 3px 5px;
+}
+.admonition.note,
+.admonition.hint,
+.admonition.danger,
+.admonition.caution,
+.admonition.error,
+.admonition.attention {
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  position: relative;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  border-left: 0.4rem solid #448aff;
+  border-radius: 0.2rem;
+  overflow: auto;
+}
+html .admonition>:last-child {
+  margin-bottom: 1.2rem;
+}
+.admonition .admonition {
+  margin: 1em 0;
+}
+.admonition p {
+  margin-top: 0.5em;
+}
+.admonition.note>.admonition-title:before,
+.admonition.hint>.admonition-title:before,
+.admonition.danger>.admonition-title:before,
+.admonition.caution>.admonition-title:before,
+.admonition.error>.admonition-title:before,
+.admonition.attention>.admonition-title:before {
+  position: absolute;
+  left: 1.2rem;
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+/* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+/* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+/* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+/* Support for IE. */
+  font-feature-settings: 'liga';
+}
+.admonition.note>.admonition-title,
+.admonition.hint>.admonition-title,
+.admonition.danger>.admonition-title,
+.admonition.caution>.admonition-title,
+.admonition.error>.admonition-title,
+.admonition.attention>.admonition-title {
+  margin: 0 -1.2rem;
+  padding: 0.8rem 1.2rem 0.8rem 4rem;
+  border-bottom: 0.1rem solid rgba(68,138,255,0.1);
+  background-color: rgba(68,138,255,0.1);
+  font-weight: 700;
+}
+.admonition>.admonition-title:last-child {
+  margin-bottom: 0;
+}
+.admonition.note {
+  border-left-color: #0288d1;
+}
+.admonition.note>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(2,136,209,0.2);
+  background-color: rgba(2,136,209,0.2);
+}
+.admonition.note>.admonition-title:before {
+  color: #0288d1;
+  content: "note";
+}
+.admonition.hint {
+  border-left-color: #009688;
+}
+.admonition.hint>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(0,150,136,0.2);
+  background-color: rgba(0,150,136,0.2);
+}
+.admonition.hint>.admonition-title:before {
+  color: #009688;
+  content: "info_outline";
+}
+.admonition.danger {
+  border-left-color: #c2185b;
+}
+.admonition.danger>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(194,24,91,0.2);
+  background-color: rgba(194,24,91,0.2);
+}
+.admonition.danger>.admonition-title:before {
+  color: #c2185b;
+  content: "block";
+}
+.admonition.caution {
+  border-left-color: #ffa726;
+}
+.admonition.caution>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(255,167,38,0.2);
+  background-color: rgba(255,167,38,0.2);
+}
+.admonition.caution>.admonition-title:before {
+  color: #ffa726;
+  content: "warning";
+}
+.admonition.error {
+  border-left-color: #d32f2f;
+}
+.admonition.error>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(211,47,47,0.2);
+  background-color: rgba(211,47,47,0.2);
+}
+.admonition.error>.admonition-title:before {
+  color: #d32f2f;
+  content: "error_outline";
+}
+.admonition.attention {
+  border-left-color: #455a64;
+}
+.admonition.attention>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(69,90,100,0.2);
+  background-color: rgba(69,90,100,0.2);
+}
+.admonition.attention>.admonition-title:before {
+  color: #455a64;
+  content: "priority_high";
+}
+body[data-theme="dark"] {
+  color: #f9f9f9;
+  border-color: #444b59;
+  background-color: #2c3033;
+}
+body[data-theme="dark"] a:hover {
+  background-color: rgba(90,214,186,0.2) !important;
+}
+body[data-theme="dark"] code {
+  color: #ea6730;
+  border-color: #3d4450;
+  background-color: #363a3e;
+}
+body[data-theme="dark"] pre {
+  border-color: #474f5c;
+}
+body[data-theme="dark"] pre code {
+  background-color: transparent;
+}
+body[data-theme="dark"] label.taskListItem {
+  background-color: #2c3033;
+}
+body[data-theme="dark"] table thead tr {
+  background-color: #282b2e;
+}
+body[data-theme="dark"] table thead th {
+  border-color: #444b59;
+}
+body[data-theme="dark"] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="dark"] table tbody tr:nth-child(2n + 1) {
+  background-color: #2c3033;
+}
+body[data-theme="dark"] table tbody tr:nth-child(2n) {
+  background-color: #282b2e;
+}
+body[data-theme="dark"] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme="dark"] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="dark"] kbd {
+  background-color: #444b59;
+  color: #f9f9f9;
+}
+body[data-theme="solarized-dark"] {
+  color: #93a1a1;
+  border-color: #444b59;
+  background-color: #073642;
+}
+body[data-theme="solarized-dark"] table thead tr {
+  background-color: #06313b;
+}
+body[data-theme="solarized-dark"] table thead th {
+  border-color: #444b59;
+}
+body[data-theme="solarized-dark"] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="solarized-dark"] table tbody tr:nth-child(2n + 1) {
+  background-color: #073642;
+}
+body[data-theme="solarized-dark"] table tbody tr:nth-child(2n) {
+  background-color: #06313b;
+}
+body[data-theme="solarized-dark"] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme="solarized-dark"] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="monokai"] {
+  color: #f8f8f2;
+  border-color: #444b59;
+  background-color: #272822;
+}
+body[data-theme="monokai"] table thead tr {
+  background-color: #23241f;
+}
+body[data-theme="monokai"] table thead th {
+  border-color: #444b59;
+}
+body[data-theme="monokai"] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="monokai"] table tbody tr:nth-child(2n + 1) {
+  background-color: #272822;
+}
+body[data-theme="monokai"] table tbody tr:nth-child(2n) {
+  background-color: #23241f;
+}
+body[data-theme="monokai"] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme="monokai"] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="monokai"] kbd {
+  background-color: #1e2127;
+}
+body[data-theme="dracula"] {
+  color: #f8f8f2;
+  border-color: #444b59;
+  background-color: #282a36;
+}
+body[data-theme="dracula"] table thead tr {
+  background-color: #242631;
+}
+body[data-theme="dracula"] table thead th {
+  border-color: #444b59;
+}
+body[data-theme="dracula"] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="dracula"] table tbody tr:nth-child(2n + 1) {
+  background-color: #282a36;
+}
+body[data-theme="dracula"] table tbody tr:nth-child(2n) {
+  background-color: #242631;
+}
+body[data-theme="dracula"] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme="dracula"] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="dracula"] kbd {
+  background-color: #1e2127;
+}
+/*# sourceMappingURL=browser/components/markdown.css.map */
+
+body {
+  font-family: 'Segoe UI','meiryo','Microsoft YaHei','helvetica','arial','sans-serif';
+  font-size: 14px;
+  false
+}
+code {
+  font-family: 'Segoe UI','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro','monospace';
+  background-color: rgba(0,0,0,0.04);
+}
+.lineNumber {
+  display: block !important;
+  font-family: 'Segoe UI','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro','monospace';
+}
+
+.clipboardButton {
+  color: rgba(147,147,149,0.8);;
+  fill: rgba(147,147,149,1);;
+  border-radius: 50%;
+  margin: 0px 10px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+.clipboardButton:hover {
+  transition: 0.2s;
+  color: #939395;
+  fill: #939395;
+  background-color: rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  border: none;
+}
+
+h1 {
+  padding-bottom: 4px;
+  margin: 1em 0 8px;
+}
+
+h2 {
+  padding-bottom: 0.2em;
+  margin: 1em 0 0.37em;
+}
+
+body p {
+  white-space: normal;
+}
+
+@media print {
+  body[data-theme="default"] {
+    color: #000;
+    background-color: #fff;
+  }
+  .clipboardButton {
+    display: none
+  }
+}
+</style>
+                   <link rel="stylesheet" href="css/dracula.css"><link rel="stylesheet" href="css/katex.min.css"><link rel="stylesheet" href="css/codemirror.css">
+                 </head>
+                 <body><h4 data-line="0" id="Hypertext-Information-Retrieval-System-to-Incorporate-Multimedia-Information-Hypermedia">Hypertext Information Retrieval System to Incorporate Multimedia Information (Hypermedia)</h4>
+<h6 data-line="2" id="Proposal">Proposal</h6>
+<p data-line="3">Limiting the target of any retrieval system to text documents overlooks many opportunities. What about video, audio, imagery, etc? For my technology review I want to research and discuss some cutting-edge approaches being used to optimize a retrieval system that targets hypermedia. Examples of this being used can be found in smarthome devices like Google Home and Alexa, and considering how premature these technologies are I see a lot of opportunity for growth on the topic of hypermedia retrieval.</p>
+<h4 data-line="5" id="Research">Research</h4>
+<h6 data-line="6" id="Hypermedia-Free-Text-Retrieval"><a href="https://personal.cis.strath.ac.uk/mark.dunlop/research/publications/ipm/">Hypermedia &amp; Free Text Retrieval</a></h6>
+<p data-line="8">The goal is to create a retrieval mechanism that targets non-text-based data. (2)</p>
+<p data-line="10">Many times non-text-based items are identified as text-based by being given a form of ID number</p>
+<p data-line="12">Old style is browser-based hypermedia, which allows user to browse through document base using a series of paths connecting documents together. These are restricted in scale due to the undirected approach</p>
+<p data-line="14">User issues a query to locate the approximate area to browse, but with this approach non-textual documents must be accessed by textual nodes. If user wants to search for an image, they could retrieve a URL that relates to both the image and their query. If a user enters a query, they will get a result of textual nodes that link to the non-textual item, which the user would use to ultimately access the non-textual item. These textual nodes form a cluster; closely related to the non-text-based item. The cluster representative assigns the non=text-based item a combined descriptor based on the nodes of the cluster. This descriptor can be used to perform information retrieval operations like querying and feedback.</p>
+<p data-line="16">Simple Cluster Based Model of Retrieval</p>
+<h6 data-line="17" id="Level-1-Cut-Offyout">Level 1 Cut Offyout</h6>
+<p data-line="18">Consider each document <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">L</span></span></span></span> as an <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span>-dimensional vector where each term is a dimension. <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>L</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">L_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span> is a weight of term <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">i</span></span></span></span> in document <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">L</span></span></span></span>. Use cluster algorithm to calculate the centroid of the points to represent the document in the cluster.</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>W</mi><mrow><mi>d</mi><mo separator="true">,</mo><mi>i</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>L</mi><mo>∈</mo><msub><mi>C</mi><mi>d</mi></msub></mrow><mrow><mrow><mi mathvariant="bold">∣</mi><msub><mi mathvariant="bold">C</mi><mi mathvariant="bold">d</mi></msub><mi mathvariant="bold">∣</mi></mrow></mrow></mfrac></mrow><annotation encoding="application/x-tex">W_{d, i} = \frac{L \in C_d}{\mathbf{|C_d|}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.36033em;"></span><span class="strut bottom" style="height:2.29633em;vertical-align:-0.936em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">d</span><span class="mpunct mtight">,</span><span class="mord mathit mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">∣</span><span class="mord"><span class="mord mathbf">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord mathbf">∣</span></span></span></span><span style="top:-3.15em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.2em;"><svg width='400em' height='0.2em' viewBox='0 0 400000 200' preserveAspectRatio='xMinYMin slice'><path d='M0 80H400000 v40H0z M0 80H400000 v40H0z'/></svg></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathit">L</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p data-line="21">where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>W</mi></mrow><annotation encoding="application/x-tex">W</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">W</span></span></span></span> is the cluster based weight and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">C_d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span> is the cluster of documents linked to and from document <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">d</span></span></span></span></p>
+<p data-line="23">This only takes into account the immediate neighbors of the node in a hypermedia network. To do update this model, add a peice that takes into account all of the nodes which can be reached from the node in question by following at most two links and vice-versa.</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>W</mi><mrow><mi>d</mi><mo separator="true">,</mo><mi>i</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>L</mi><mo>∈</mo><msub><mi>C</mi><mi>d</mi></msub></mrow><mrow><mrow><mi mathvariant="bold">∣</mi><msub><mi mathvariant="bold">C</mi><mi mathvariant="bold">d</mi></msub><mi mathvariant="bold">∣</mi></mrow></mrow></mfrac><mo>+</mo><mfrac><mrow><mi>L</mi><mo>∈</mo><msub><mi>C</mi><mi>d</mi></msub></mrow><mrow><mrow><mi mathvariant="bold">∣</mi><msub><mi mathvariant="bold">C</mi><mi mathvariant="bold">d</mi></msub><mi mathvariant="bold">∣</mi></mrow></mrow></mfrac></mrow><annotation encoding="application/x-tex">W_{d, i} = \frac{L \in C_d}{\mathbf{|C_d|}} +  \frac{L \in C_d}{\mathbf{|C_d|}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.36033em;"></span><span class="strut bottom" style="height:2.29633em;vertical-align:-0.936em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">d</span><span class="mpunct mtight">,</span><span class="mord mathit mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">∣</span><span class="mord"><span class="mord mathbf">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord mathbf">∣</span></span></span></span><span style="top:-3.15em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.2em;"><svg width='400em' height='0.2em' viewBox='0 0 400000 200' preserveAspectRatio='xMinYMin slice'><path d='M0 80H400000 v40H0z M0 80H400000 v40H0z'/></svg></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathit">L</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">∣</span><span class="mord"><span class="mord mathbf">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord mathbf">∣</span></span></span></span><span style="top:-3.15em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.2em;"><svg width='400em' height='0.2em' viewBox='0 0 400000 200' preserveAspectRatio='xMinYMin slice'><path d='M0 80H400000 v40H0z M0 80H400000 v40H0z'/></svg></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathit">L</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p data-line="26">where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">C_d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span> is the cluster of documents linked to and from document <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">d</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">C_d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span> is the cluster of documents linked to and from document <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">d</span></span></span></span> by exactly two links. Another extension of this model is to add weights to links based on relation of link to node of interest.</p>
+<h6 data-line="28" id="Limitations">Limitations</h6>
+<ul>
+<li>Limited on the quality and quantity of the links</li>
+<li>Also, the links must be different enough from each other as too similar will return convoluded results.</li>
+</ul>
+<p data-line="32">Can also benefit via query expansion by use of clustering information. Beyond returning non-text-based items, you can also add more context to the nodes used in the clustering process.</p>
+<p data-line="35"><a href="https://www.academia.edu/RegisterToDownload#Papers">Academia.edu | Log In</a></p>
+<p data-line="37">Hyper media can serve two purposes:</p>
+<ul>
+<li>Improve text-retrieval</li>
+<li>Retrieval of multimedia documents</li>
+</ul>
+<p data-line="41">One of the most important contributions was made by Dunlop et al. (1993) and further developed by Harmandas et al. (1997) who introduced the automatic creation of non-text media descriptors to allow efficient and effective multimedia retrieval.</p>
+<p data-line="43">Concepts:</p>
+<ul>
+<li>Node: Basic unit iitem which any kind of info is kept and managed and presented.</li>
+<li>Anchor: How link is represented in a node. In node each link is associated with an anchor that represents node's content area for lin following.</li>
+<li>Links: connection between two related information items or between an information item and a node.</li>
+</ul>
+<p data-line="48">Malcon et al (1991) there was made summary of the limitations of the current closed hypermedia systems and the development of open hypermedia systems:</p>
+<ul>
+<li>Open Hypermedia Systems it is possible to use any application on hypermedia functionality by using proper protocol. No markup info imposed on data, data and processes can be distributed, no distinction between authors and the users.</li>
+</ul>
+<h6 data-line="51" id="Microcosm">Microcosm</h6>
+<p data-line="52">Microcosm is an open hypermedia system developed at the University of Southampton. This systems presents to ways to navigate through info:</p>
+<ul>
+<li>Navigate on the abstract level
+<ul>
+<li>Navigation made through the classification of the documents until the relevant document is reached.</li>
+<li>Info about classification of nodes is kept in a seperate database managed by a Document Management System: logical index, document description, keywords, author names, etc. DIrectories are logical indexes and files are identified by text description.</li>
+</ul>
+</li>
+<li>Hypermedia navigation on the document level</li>
+</ul>
+<p data-line="58">Different kinds of links in the Microcosm model:</p>
+<ul>
+<li>Specific Links: tight connection between two fixed anchors. Important to create the backbone link structure of an application at the document level that allows user to navigate through different items of information that may be related or not.</li>
+<li>Local Links: Link with a fixed destination anchor, but with a source anchor. Depends on rules like pattern matching occurrences like a text string. Important for the definition of words or names, give examples, or show related information valid within the node</li>
+<li>Generic Links: same as Local links, but valid for all the application.</li>
+<li>Dynamic Computed Links: link with a computed destination anchor and a selected source. Allows some information retrieval techniques and suggests starting points for navigation.</li>
+</ul>
+<p data-line="64">Lack of markup in document achieved by keeping all link information in link databases. The Microcosm also seperates the front end from the backend.</p>
+<ul>
+<li>Front End: viewers and responsible for user interaction</li>
+<li>Backend consists of chain of filters and responsible for many operations requested by the user</li>
+</ul>
+<p data-line="68">Different Retrieval Models</p>
+<ul>
+<li>Boolean Retrieval Models: compare boolean query statement (terms connected by boolean operators) with term set used to identify the document content.</li>
+<li>Vector Space Model: Queries and documents by vecotrs or weighted terms and computes global similarities between queries and documents. Similarity is a function that determines a sort of distance between two representative term vectors.</li>
+<li>Cluster Document Environments classifies all documents under clusters of related information structured in a hierarchal way used to perform browsing or analytical retrieval. This model can get to relevant documents even when they are not related to queries.</li>
+<li>Probabilistic Retrieval Models</li>
+</ul>
+<p data-line="74">It is important to seperate documents on different topics. After splitting text info into structured paragraphs techniques were applied to find similarity  between all paragraphs in a certain node making it possible to create links between related information. This creates a significantly high number of links. By studying the distribution of links within a node it is possible to identify a distribution pattern of the links inside a node to find the theme and segment passages.</p>
+<p data-line="76">Sets of three similar paragraphs are joined in a centroid vector and all similar centroid vectors with three or more paragraphs merged to form a theme. With nodes decomposed into themes and segments it is possible to implement passage retrieval. This allows:</p>
+<ul>
+<li>Text Retrieval (retrieve the best passages in a certain topic)</li>
+<li>Text Summerization: summerize info in a node by retrieving the most relevant paragraphs in a passage and connecting them with the appropriate transition material.</li>
+</ul>
+<p data-line="80">*** Will Continue in Section 4</p>
+</body>
+              </html>

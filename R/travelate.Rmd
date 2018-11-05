@@ -1,0 +1,109 @@
+---
+title: "Untitled"
+author: "Scott Bishop"
+date: "November 4, 2018"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+
+# Install Packages
+# ==================================================
+
+packages <- c()   
+init.pkg <- setdiff( packages, rownames( installed.packages() ) ) 
+
+if ( length(init.pkg) > 0 ) 
+{ 
+    install.packages(init.pkg) 
+} 
+
+lapply(packages, require, character.only = TRUE)
+
+```
+
+```{r}
+
+# Set Up Environment
+# ==================================================
+
+set.seed(19920917)
+
+setwd('C:\\Users\\andre\\Desktop\\travelate\\R')
+df <- read.csv('../data/hotels.csv')
+
+```
+
+```{r}
+
+# Number of Hotel Names
+nrow(unique(df["Hotel_Name"]))
+
+# Export Hotel Frequency
+hotel.names <- as.data.frame( table(df["Hotel_Name"]) )
+hotel.names <- hotel.names[ order( hotel.names$Freq, decreasing = TRUE ), c(1,2) ]
+
+write.csv( hotel.names, file = "../data/hotels_names.csv" )
+
+```
+
+
+```{r}
+
+# Select Vaiables of Interest
+# ==================================================
+df <- subset(df, select = -c( Additional_Number_of_Scoring,
+                              Review_Date,
+                              Reviewer_Nationality,
+                              Review_Total_Negative_Word_Counts,
+                              Review_Total_Positive_Word_Counts,
+                              Total_Number_of_Reviews_Reviewer_Has_Given,
+                              lat,
+                              lng ))
+
+```
+
+```{r}
+
+# Normalize Average_Score and Reviewer_Score
+df["Average_Score"]  <- round( ( df["Average_Score"] / 10 ), 2 ) 
+df["Reviewer_Score"] <- round( ( df["Reviewer_Score"] / 10 ), 2 ) 
+
+```
+
+```{r}
+
+# Transform days_since_review to Integer
+df["days_since_review"] <- as.integer( unlist( df["days_since_review"] ) )
+
+```
+
+```{r}
+
+# Transform Tags Variable into Array
+tags <- as.character( unlist( df["Tags"] ) )
+tags <- strsplit( tags, "[ ',]" )
+
+remove <- c("", "[", "]", NA)
+
+df["Tags"] <- as.character( unlist( df["Tags"] ) )
+
+for ( i in 1:length( tags ) ) 
+{
+    df[i, "Tags"] <- paste( subset( tags[[i]], 
+                            !(tags[[i]] %in% remove ) ), collapse = " " )
+    
+    if (i %% 1000 == 0) { print( i ) }
+}
+
+```
+
+```{r}
+
+# Write Updated CSV
+write.csv( df, file = "../data/hotels_2.csv" )
+
+```
+
