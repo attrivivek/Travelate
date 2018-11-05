@@ -107,3 +107,24 @@ write.csv( df, file = "../data/hotels_2.csv" )
 
 ```
 
+```{r}
+
+# Get Frequency of Countries
+
+countries <- rep( '', nrow(df) )
+
+for ( row in 1:nrow(df) )
+{
+    iter           <- strsplit(as.character( df[row, 1] ), " ")
+    iter           <- unlist( iter )
+    countries[row] <- iter[ length( iter ) ]
+}
+
+```
+
+```{r}
+
+# Write Country distribution to CSV
+write.csv( as.data.frame(table(countries)), file = "../data/countries.csv" )
+
+```
