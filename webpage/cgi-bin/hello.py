@@ -6,10 +6,11 @@ app = Flask(__name__)
 def my_form():
     return render_template('index.html')
 
-@app.route('/', methods=['GET'])
+@app.route('/')
+
 def my_form_post():
-    text = request.form['hotel_query']
-    processed_text = text.upper()
-    return processed_text
+    if request.method=='POST':
+        text = request.form['hotel_query']
+        return render_template('index.html', text=text)
 
 app.run(port = 5000)
