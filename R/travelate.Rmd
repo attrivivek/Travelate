@@ -128,3 +128,41 @@ for ( row in 1:nrow(df) )
 write.csv( as.data.frame(table(countries)), file = "../data/countries.csv" )
 
 ```
+
+```{r}
+
+temp.df <- read.csv('../data/hotels_2.csv')
+temp.df <- temp.df[, -1]
+
+temp.countries <- rep( '', nrow(temp.df) )
+
+for ( row in 1:length(temp.countries) )
+{
+    iter                <- strsplit(as.character( temp.df[row, 1] ), " ")
+    iter                <- unlist( iter )
+    temp.countries[row] <- iter[ length( iter ) ]
+}
+
+temp.df.2 <- cbind(temp.countries, temp.df)
+
+netherlands.df <- temp.df.2[ temp.df.2 == "Netherlands", ]
+austria.df     <- temp.df.2[ temp.df.2 == "Austria", ]
+france.df      <- temp.df.2[ temp.df.2 == "France", ]
+italy.df       <- temp.df.2[ temp.df.2 == "Italy", ]
+kingdom.df     <- temp.df.2[ temp.df.2 == "Kingdom", ]
+spain.df       <- temp.df.2[ temp.df.2 == "Spain", ]
+
+netherlands.df <- netherlands.df[ sample( nrow(netherlands.df), 10000 ), ]
+austria.df     <- austria.df    [ sample( nrow(austria.df),     10000 ), ]
+france.df      <- france.df     [ sample( nrow(france.df),      10000 ), ]
+italy.df       <- italy.df      [ sample( nrow(italy.df),       10000 ), ]
+kingdom.df     <- kingdom.df    [ sample( nrow(kingdom.df),     10000 ), ]
+spain.df       <- spain.df      [ sample( nrow(spain.df),       10000 ), ]
+
+temp.df.3 <- rbind(netherlands.df, austria.df, france.df, italy.df, kingdom.df, spain.df )
+temp.df.3 <- temp.df.3[ sample( nrow(temp.df.3), nrow(temp.df.3) ), ]
+
+write.csv( as.data.frame(table(countries)), file = "../data/hotels_3.csv" )
+
+```
+
