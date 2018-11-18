@@ -11,20 +11,30 @@
         <meta charset="UTF-8">
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" />
-        
-        <link href="../css/styles.css" rel="stylesheet" />
+
+        <link href="{{ url_for('static',filename='styles/result.css') }}" rel="stylesheet" />
 
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" />
     </head>
 
     <body>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12" id="results">
-                    <p>{{ output }}</p>
+                    {{ output | safe }}
                 </div>
             </div>
         </div>
     </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+    (function($, window, document) {
+        $(document).ready(function () {
+
+        });
+    }(window.jQuery, window, document));
+    </script>
 
 </html>

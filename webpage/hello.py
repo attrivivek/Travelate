@@ -1,2 +1,2 @@
-def test_func(hotel_result):
-    return hotel_result["hotel_query"]
+def test_func(data):
+    return data.head(n = 10)

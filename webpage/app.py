@@ -1,5 +1,8 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import hello
+import csv
+import json
+import pandas as pd 
 
 app = Flask(__name__)
 
@@ -17,5 +20,8 @@ def index():
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
     if request.method == 'POST':
-        output = hello.test_func(request.form)
-        return render_template('result.html', output = output)
+        pd.options.display.max_colwidth = 1000
+        data   = pd.read_csv('../data/hotels_3.csv')
+        output = hello.test_func(data)
+
+        return render_template('result.html', output = output.to_html(escape = False))

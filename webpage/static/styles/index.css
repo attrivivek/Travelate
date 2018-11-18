@@ -1,0 +1,57 @@
+/* 
+==================================================
+Globals 
+==================================================
+*/
+.container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row {
+    min-width: 100%;
+}
+
+/* 
+==================================================
+Search 
+==================================================
+*/
+#search__top {
+    text-align: center;
+}
+
+#search__top h1 {
+    margin-bottom: 30px;
+}
+
+#search__input {
+    width: 100%;
+    padding: 4px;
+}
+
+#search__submit {
+    /* line-height: 30px; */
+    background-color: green;
+    color: #ffffff;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+    padding: 5px 10px;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+        border-radius: 3px;
+}
+
+#search__submit:hover {
+    background-color: darkgreen;
+    transition: 0.3s;
+}
+
+/* 
+==================================================
+Results 
+==================================================
+*/
