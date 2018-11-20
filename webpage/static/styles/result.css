@@ -25,7 +25,8 @@ Table
 }
 
 #results td {
-    min-width: 200px;
+    min-width: 50px;
+    max-width: 300px;
     padding: 10px 12px;
 }
 

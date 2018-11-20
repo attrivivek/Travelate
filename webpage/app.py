@@ -21,7 +21,11 @@ def index():
 def result():
     if request.method == 'POST':
         pd.options.display.max_colwidth = 1000
-        data   = pd.read_csv('../data/hotels_3.csv')
-        output = hello.test_func(data)
+        # This variable is not used but kept for archival purposes for now
+        data = pd.read_csv('../data/hotels_3.csv')
+
+        # Update this to replicate a query being submitted by the user
+        query  = "Hotels in the Netherlands with Great Bedrooms"
+        output = hello.test_func(query)
 
         return render_template('result.html', output = output.to_html(escape = False))
