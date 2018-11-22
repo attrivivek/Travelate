@@ -162,7 +162,38 @@ spain.df       <- spain.df      [ sample( nrow(spain.df),       10000 ), ]
 temp.df.3 <- rbind(netherlands.df, austria.df, france.df, italy.df, kingdom.df, spain.df )
 temp.df.3 <- temp.df.3[ sample( nrow(temp.df.3), nrow(temp.df.3) ), ]
 
-write.csv( as.data.frame(table(countries)), file = "../data/hotels_3.csv" )
+colnames(temp.df.3) <- c('Hotel Address', 'Tags', 'Reviewer Score', 'Country', 'Total Reviews', 
+                         'Hotel Name', 'Average Score', 'Negative Review', 'Positive Review', 'Days Since Review')
+write.csv( temp.df.3, file = "../data/hotels_3.csv", row.names = FALSE )
+
+```
+
+```{r}
+
+sentiment.df <- read.csv('../data/hotels_3_with_review_score.csv')
+
+```
+
+```{r}
+
+neg.omit.array <- c('no', 'no negative', 'none', 'nothing', 'nil', 'nothing really', 'n a', 'na', 'nothing to say')
+pos.omit.array <- c('no', 'no positive', 'none', 'nothing', 'nil', 'nothing really', 'n a', 'na', 'nothing to say')
+
+temp.df.3[, 'Negative_Review'] <- tolower( as.character( temp.df.3[, 'Negative_Review'] ) )
+temp.df.3[, 'Positive_Review'] <- tolower( as.character( temp.df.3[, 'Positive_Review'] ) )
+
+for ( i in 1:nrow(temp.df.3) ) 
+{
+    if ( any( temp.df.3[i, 'Negative_Review'] == neg.omit.array ) )
+    {
+        temp.df.3[i, 'Negative_Review'] <- ''
+    }
+    
+    if ( any( temp.df.3[i, 'Positive_Review'] == pos.omit.array ) )
+    {
+        temp.df.3[i, 'Positive_Review'] <- ''
+    }
+}
 
 ```
 
