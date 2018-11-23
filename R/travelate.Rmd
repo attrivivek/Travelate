@@ -12,7 +12,7 @@ editor_options:
 # Install Packages
 # ==================================================
 
-packages <- c()   
+packages <- c('stringr')   
 init.pkg <- setdiff( packages, rownames( installed.packages() ) ) 
 
 if ( length(init.pkg) > 0 ) 
@@ -30,8 +30,7 @@ lapply(packages, require, character.only = TRUE)
 # ==================================================
 
 set.seed(19920917)
-
-setwd('C:\\Users\\andre\\Desktop\\travelate\\R')
+setwd('C:\\Users\\scott\\Desktop\\project\\Travelate\\Travelate\\R')
 df <- read.csv('../data/hotels.csv')
 
 ```
@@ -170,30 +169,38 @@ write.csv( temp.df.3, file = "../data/hotels_3.csv", row.names = FALSE )
 
 ```{r}
 
+setwd('C:\\Users\\scott\\Desktop\\project\\Travelate\\Travelate\\R')
 sentiment.df <- read.csv('../data/hotels_3_with_review_score.csv')
 
 ```
 
 ```{r}
 
-neg.omit.array <- c('no', 'no negative', 'none', 'nothing', 'nil', 'nothing really', 'n a', 'na', 'nothing to say')
-pos.omit.array <- c('no', 'no positive', 'none', 'nothing', 'nil', 'nothing really', 'n a', 'na', 'nothing to say')
+omit.array <- c('no', 'no negative', 'no positive', 'none', 'nothing', 'nil', 'nothing really', 'n a', 'na', 'nothing to say', 'nothing at all', 'nothing in particular', 'no complaints', 'nothing worth mentioning')
 
-temp.df.3[, 'Negative_Review'] <- tolower( as.character( temp.df.3[, 'Negative_Review'] ) )
-temp.df.3[, 'Positive_Review'] <- tolower( as.character( temp.df.3[, 'Positive_Review'] ) )
+sentiment.df[, 'Negative.Review'] <- trimws( tolower( as.character( sentiment.df[, 'Negative.Review'] ) ) )
+sentiment.df[, 'Positive.Review'] <- trimws( tolower( as.character( sentiment.df[, 'Positive.Review'] ) ) )
 
-for ( i in 1:nrow(temp.df.3) ) 
+for ( i in 1:nrow(sentiment.df) )
 {
-    if ( any( temp.df.3[i, 'Negative_Review'] == neg.omit.array ) )
+    # if ( any(str_detect(sentiment.df[i, 'Negative.Review'], neg.omit.array)) )
+    if ( any(sentiment.df[i, 'Negative.Review'] %in% omit.array) )
     {
-        temp.df.3[i, 'Negative_Review'] <- ''
+        sentiment.df[i, 'Negative.Review'] <- ''
     }
-    
-    if ( any( temp.df.3[i, 'Positive_Review'] == pos.omit.array ) )
+
+    # if ( any(str_detect(sentiment.df[i, 'Positive.Review'], pos.omit.array)) )
+    if ( any(sentiment.df[i, 'Positive.Review'] %in% omit.array) )
     {
-        temp.df.3[i, 'Positive_Review'] <- ''
+        sentiment.df[i, 'Positive.Review'] <- ''
     }
 }
+
+```
+
+```{r}
+
+write.csv( sentiment.df, file = "../data/hotels_4.csv", row.names = FALSE )
 
 ```
 
