@@ -3,6 +3,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer, BOOSTER_DI
 from nltk import tokenize
 import sys, os
 import pandas as pd
+import numpy as np
 
 # Global variables
 # sentiment classification
@@ -10,8 +11,8 @@ sentiment = {"-2": "very negative", "-1": "negative", "0": "neutral",
              "1": "positive", "2": "very positive"}
 # dataset path
 DATSET_PATH = "../data/"
-HOTEL_DATASET = DATSET_PATH + "hotels_3.csv"
-HOTEL_DATASET_WITH__SCORE = DATSET_PATH + "hotels_3_with_review_score.csv"
+HOTEL_DATASET = DATSET_PATH + "hotels_4.csv"
+HOTEL_DATASET_WITH__SCORE = DATSET_PATH + "hotels_4_with_review_score.csv"
 
 def check_sentiment(score):
     senti = .99  # default value
@@ -62,12 +63,21 @@ def read_dataset():
     d_hotel = pd.read_csv(HOTEL_DATASET)
     #print d_hotel.head(10) 
     print "columns:", d_hotel.columns.values
-    d_hotel = d_hotel.reindex( columns = d_hotel.columns.tolist() + ['Neg_Review_Score','Pos_Review_Score'])
-    print "columns:", d_hotel.columns.values
-    for index, row in d_hotel.iterrows(): 
-        print "N:", row['Negative Review'], "    ", "P", row['Positive Review']
-        n_review = analyse_sentiment(row['Negative Review'], choice=3)     
-        p_review = analyse_sentiment(row['Positive Review'], choice=3)
+    #d_hotel = d_hotel.reindex( columns = d_hotel.columns.tolist() + ['Neg_Review_Score','Pos_Review_Score'])
+    #print "columns:", d_hotel.columns.values
+    for index, row in d_hotel.iterrows():
+        print "Rows::"
+        print row
+        print "*********************************"                 
+        neg_review = row['Negative.Review']
+        pos_review = row['Positive.Review']
+        print "N:", row['Negative.Review'], "    ", "P", row['Positive.Review']
+        n_review = p_review = 0
+   
+        if not pd.isnull(row['Negative.Review']): 
+            n_review = analyse_sentiment(row['Negative.Review'], choice=3)    
+        if not pd.isnull(row['Positive.Review']): 
+            p_review = analyse_sentiment(row['Positive.Review'], choice=3)
         d_hotel.set_value(index, 'Neg_Review_Score', n_review)
         d_hotel.set_value(index, 'Pos_Review_Score', p_review)    
         print "n_Score: ", n_review, "    ", "p_Score: ", p_review
