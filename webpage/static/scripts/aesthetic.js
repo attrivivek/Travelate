@@ -1,6 +1,6 @@
 (function($, window, document) {
     $(document).ready(function () {
-        $(".hotel-score p").each(function() {
+        $(".hotel-score p:nth-child(2)").each(function() {
             if ( parseFloat( $(this).text() ) >= 0.80 ) {
                 $(this).css("color", "green");
             }

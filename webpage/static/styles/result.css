@@ -4,6 +4,13 @@ Globals
 ==================================================
 */
 
+html a,
+html a:hover,
+html a:active {
+    text-decoration: none;
+    color: #000000;
+}
+
 .row {
     min-width: 100%;
 }
@@ -19,14 +26,6 @@ Table
     padding: 15px 25px;
 }
 
-.name-label,
-.score-label,
-.count-label,
-.address-label {
-    font-weight: 700;
-    color:     #7e7e7e
-}
-
 .hotel-score p,
 .hotel-review-count p {
     font-weight: 700;
@@ -35,4 +34,40 @@ Table
 .hotel-row:hover {
     cursor:           pointer;
     background-color: #DCF0F7 ;
+}
+
+button#reset-search {
+    background: green;
+    color: #ffffff;
+    padding: 10px;
+    width: 20%;
+    margin: 30px auto 15px auto;
+    border: none;
+    border-radius: 5px;
+    display: block;
+    transition: 0.3s;
+}
+
+button#reset-search:hover {
+    background: darkgreen;
+    transition: 0.3s;
+}
+
+button#reset-search a {
+    color:         #ffffff;
+    text-decoration: none;
+}
+
+.name-label,
+.score-label,
+.count-label,
+.address-label {
+    font-weight: 700;
+    color:     #7e7e7e;
+}
+
+@media screen and (max-width: 767px) {
+    button#reset-search {
+        width: 40%;
+    }
 }

@@ -31,30 +31,29 @@ def result():
         html = ""
 
         for index, row in output.iterrows():
-            html = (html  + "<div class='hotel-row'>" +
-                                "<div class='row result-labels'>" +
-                                    "<div class='col-sm-6 name-label'>Hotel Name</div>" +
-                                    "<div class='col-sm-3 score-label'>Average Rating</div>" +
-                                    "<div class='col-sm-3 count-label'>Number of Reviews</div>" +
-                                "</div>" +
+            html = (html  + "<a href='https://www.google.com/search?q=" + row['Hotel.Name'].strip() + "' target='_blank'>" + 
+                                "<div class='hotel-row'>" +
+                                    "<div class='row'>" +
+                                        "<div class='col-sm-6 hotel-name'>" +
+                                            "<p class='name-label'>Hotel Name</p>" +
+                                            "<p>" + row['Hotel.Name'] + "</p>" +
+                                        "</div>" +
 
-                                "<div class='row'>" +
-                                    "<div class='col-sm-6 hotel-name'>" +
-                                        "<p>" + row['Hotel.Name'] + "</p>" +
-                                    "</div>" +
+                                        "<div class='col-sm-3 hotel-score'>" +
+                                            "<p class='score-label'>Average Rating</p>" +
+                                            "<p>" + str( row['Average.Score'] ) + "</p>" +
+                                        "</div>" +
 
-                                    "<div class='col-sm-3 hotel-score'>" +
-                                        "<p>" + str( row['Average.Score'] ) + "</p>" +
-                                    "</div>" +
+                                        "<div class='col-sm-3 hotel-review-count'>" +
+                                            "<p class='count-label'>Number of Reviews</p>" +
+                                            "<p>" + str( row['Total.Reviews'] ) + "</p>" +
+                                        "</div>" +
 
-                                    "<div class='col-sm-3 hotel-review-count'>" +
-                                        "<p>" + str( row['Total.Reviews'] ) + "</p>" +
-                                    "</div>" +
-
-                                    "<div class='col-sm-12 hotel-address'>" +
-                                        "<p><span class='address-label'>Address: </span>" + row['Hotel.Address'] + "</p>" +
-                                    "</div>" +
-                                "</div>"
-                            "</div><hr>")
+                                        "<div class='col-sm-12 hotel-address'>" +
+                                            "<p><span class='address-label'>Address: </span>" + row['Hotel.Address'] + "</p>" +
+                                        "</div>" +
+                                    "</div>"
+                                "</div><hr>" +
+                            "</a>")
 
         return render_template( 'result.html', output = html )
