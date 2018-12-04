@@ -14,34 +14,18 @@ Table
 ==================================================
 */
 
-#results .dataframe {
-    overflow: scroll;
-    margin: 50px;
-    border-color: #ffffff;
-    border-top-width: 0;
-    border-right-width: 0;
-    border-bottom-width: 0;
-    border-left-width: 0;
+.hotel-row {
+    margin: 20px;
 }
 
-#results td {
-    min-width: 50px;
-    max-width: 300px;
-    padding: 10px 12px;
+.name-label,
+.score-label,
+.count-label,
+.address-label {
+    font-weight: 900;
 }
 
-table.dataframe th {
-    padding: 10px;
-}
-
-table.dataframe tr > th:nth-child(1) {
-    display: none;
-}
-
-table.dataframe tbody tr:nth-child(even) {
-    background: #DAF4FF;
-}
-
-table.dataframe tbody tr:nth-child(odd) {
-    background: #A8E4FE;
+.hotel-score p,
+.hotel-review-count p {
+    font-weight: 700;
 }
