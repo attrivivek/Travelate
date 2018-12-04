@@ -38,7 +38,7 @@ def result():
                                     "<div class='col-sm-3 count-label'>Number of Reviews</div>" +
                                 "</div>" +
 
-                                "<div class='row hotel-row'>" +
+                                "<div class='row'>" +
                                     "<div class='col-sm-6 hotel-name'>" +
                                         "<p>" + row['Hotel.Name'] + "</p>" +
                                     "</div>" +
