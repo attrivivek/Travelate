@@ -3,6 +3,7 @@
 Globals 
 ==================================================
 */
+
 .container {
     height: 100vh;
     display: flex;
@@ -19,6 +20,7 @@ Globals
 Search 
 ==================================================
 */
+
 #search__top {
     text-align: center;
 }

@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, jsonify
-import hello
+import analysis
 import csv
 import json
 import pandas as pd 
@@ -26,7 +26,7 @@ def result():
 
         # Update this to replicate a query being submitted by the user
         query  = "Hotels in the Netherlands with Great Bedrooms"
-        output = hello.test_func(query)
+        output = analysis.get_results(query)
 
         html = ""
 
