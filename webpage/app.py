@@ -6,6 +6,15 @@ import pandas as pd
 
 app = Flask(__name__)
 
+COUNTRIES = ["netherlands", "austria", "france", "italy", "kingdom", "spain"]
+
+netherlands.df
+austria.df    
+france.df     
+italy.df      
+kingdom.df    
+spain.df      
+
 # @app.route('/')
 # @app.route('/index')
 # def index():
@@ -26,7 +35,15 @@ def result():
 
         # Update this to replicate a query being submitted by the user
         query  = "Hotels in the Netherlands with Great Bedrooms"
-        output = analysis.get_results(query)
+
+        # query  = query
+        # if COUNTRIES in query 
+        #   get the country
+        #   output = analysis.get_results(query, country)
+        # elif COUNTRIES not in query
+        #   return message hotels in country not found; list countries
+
+        # output = analysis.get_results(query, country)
 
         html = ""
 
