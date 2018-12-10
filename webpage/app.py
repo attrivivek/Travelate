@@ -8,12 +8,6 @@ app = Flask(__name__)
 
 COUNTRIES = ["netherlands", "austria", "france", "italy", "kingdom", "spain"]
 
-netherlands.df
-austria.df    
-france.df     
-italy.df      
-kingdom.df    
-spain.df      
 
 # @app.route('/')
 # @app.route('/index')
@@ -24,17 +18,21 @@ spain.df
 # This is the initial application the local server runs
 @app.route('/')
 def index():
-   return render_template('index.html')
+    print "test5"
+    return render_template('index.html')
 
-@app.route('/result', methods = ['POST', 'GET'])
+
+@app.route('/result', methods=['POST', 'GET'])
 def result():
+    print "test2"
     if request.method == 'POST':
+        print "test3"
         pd.options.display.max_colwidth = 1000
         # This variable is not used but kept for archival purposes for now
-        data = pd.read_csv('../data/hotels_3.csv')
+        #data = pd.read_csv('../data/hotels_3.csv')
 
         # Update this to replicate a query being submitted by the user
-        query  = "Hotels in the Netherlands with Great Bedrooms"
+        query = "Hotels in the Netherlands with Great Bedrooms"
 
         # query  = query
         # if COUNTRIES in query 
@@ -43,11 +41,12 @@ def result():
         # elif COUNTRIES not in query
         #   return message hotels in country not found; list countries
 
-        # output = analysis.get_results(query, country)
+        output = analysis.get_results(query)
 
         html = ""
 
         for index, row in output.iterrows():
+            print "test4"
             html = (html  + "<a href='https://www.google.com/search?q=" + row['Hotel.Name'].strip() + "' target='_blank'>" + 
                                 "<div class='hotel-row'>" +
                                     "<div class='row'>" +
@@ -73,4 +72,4 @@ def result():
                                 "</div><hr>" +
                             "</a>")
 
-        return render_template( 'result.html', output = html )
+        return render_template('result.html', output=html)
