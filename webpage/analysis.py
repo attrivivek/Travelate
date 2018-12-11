@@ -19,8 +19,6 @@ AGG_HOTELS = "../data/aggregated_hotels.csv"
 def get_results(query):
     #d_hotel = pd.read_csv(HOTEL_WITH_SCORING)
 
-    print "test1"
-
     hotel = pd.read_csv(AGG_HOTELS)
 
     #idx = metapy.index.make_inverted_index('../scripts/config.toml')
@@ -36,10 +34,8 @@ def get_results(query):
 
     ranker = metapy.index.OkapiBM25()
 
-    print "test6"
-
     for result in ranker.score(idx, query, 10):
         ret_values = hotel[hotel['Hotel.Name'] == idx.metadata(result[0]).get('name')]
-        print idx.metadata(result[0]).get('name')
+        print( idx.metadata(result[0]).get('name') )
 
     return ret_values
