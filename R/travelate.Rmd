@@ -204,3 +204,28 @@ write.csv( sentiment.df, file = "../data/hotels_4.csv", row.names = FALSE )
 
 ```
 
+```{r}
+
+df.4 <- read.csv( "../data/hotels_4.csv" )
+neg  <- df.4[, "Neg_Review_Score"]
+pos  <- df.4[, "Pos_Review_Score"]
+
+
+normalization.neg <- function(x)
+{
+  x <- -( x - min(neg) ) / ( max(neg) - min(neg) )
+}
+
+normalization.pos <- function(x)
+{
+  x <- +( x - min(pos) ) / ( max(pos) - min(pos) )
+}
+
+
+df.4[, "Neg_Review_Score"] = sapply( df.4[, 'Neg_Review_Score'], normalization.neg )
+df.4[, "Pos_Review_Score"] = sapply( df.4[, 'Pos_Review_Score'], normalization.pos )
+
+write.csv( df.4, file = "../data/hotels_5.csv", row.names = FALSE )
+
+```
+

@@ -32,7 +32,7 @@ def get_results(query):
     # query = metapy.index.Document()
     # query.content("1 room")
 
-    ranker = metapy.index.OkapiBM25()
+    ranker = metapy.metapy.index.OkapiBM25()
 
     for result in ranker.score(idx, query, 10):
         ret_values = hotel[hotel['Hotel.Name'] == idx.metadata(result[0]).get('name')]
