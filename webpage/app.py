@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 COUNTRIES = ["netherlands", "austria", "france", "italy", "kingdom", "spain"]
 
-# This is the initial application the local server runs
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -23,8 +22,7 @@ def result():
 
         html = ''
 
-        # if query.lower() in any( COUNTRIES ):
-        if any( s in query for s in COUNTRIES ):
+        if any( s in query.lower() for s in COUNTRIES ):
             output = analysis.get_results(query)
 
             for index, row in output.iterrows():
