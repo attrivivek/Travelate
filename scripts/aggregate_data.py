@@ -3,7 +3,7 @@ import math
 
 
 # Variables
-HOTEL_WITH_SCORING = "../data/hotels_4_with_review_score.csv"
+HOTEL_WITH_SCORING = "../data/hotels_5.csv"
 
 AGG_HOTELS = "../data/aggregated_hotels.csv"
 
@@ -36,6 +36,7 @@ hotel_agg['Overall.Score'] = WEIGHTS[0] * hotel_agg['Neg_Review_Score'] + \
                              WEIGHTS[3] * hotel_agg['Average.Score'] + \
                              WEIGHTS[4] * hotel_agg['Total.Reviews']
 
+hotel_agg['Hotel.Address'] = data['Hotel.Address']
 
 # Write to aggregated csv
 

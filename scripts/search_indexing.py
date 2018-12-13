@@ -14,7 +14,7 @@ idx = metapy.index.make_inverted_index('config.toml')
 
 
 query = metapy.index.Document()
-query.content("1 room")
+query.content("1 room France")
 
 ranker = metapy.index.OkapiBM25()
 
