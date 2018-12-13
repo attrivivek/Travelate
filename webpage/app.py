@@ -49,6 +49,11 @@ def result():
                                             "<div class='col-sm-12 hotel-address'>" +
                                                 "<p><span class='address-label'>Address: </span>" + row['Hotel.Address'] + "</p>" +
                                             "</div>" +
+
+                                            "<div class='col-sm-3 overall-score'>" +
+                                            "<p><span class='overall-score'>Overall Score: </span>" + row['Overall.Score'] + "</p>" +
+                                            "</div>" +
+
                                         "</div>"
                                     "</div><hr>" +
                                 "</a>")

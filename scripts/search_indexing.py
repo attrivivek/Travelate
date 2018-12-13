@@ -19,10 +19,13 @@ query.content("1 room France")
 ranker = metapy.index.OkapiBM25()
 
 
+#
+# for result in ranker.score(idx, query, 10):
+#     print hotel[hotel['Hotel.Name'] == idx.metadata(result[0]).get('name')]
+    #print idx.metadata(result[0]).get('name')
 
 for result in ranker.score(idx, query, 10):
     print hotel[hotel['Hotel.Name'] == idx.metadata(result[0]).get('name')]
-    #print idx.metadata(result[0]).get('name')
 
 
 #for tag in hotel['Tags']:

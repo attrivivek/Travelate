@@ -5,7 +5,7 @@ import math
 # Variables
 HOTEL_WITH_SCORING = "../data/hotels_5.csv"
 
-AGG_HOTELS = "../data/aggregated_hotels.csv"
+AGG_HOTELS = "../data/hotels_4_with_review_score.csv"
 
 WEIGHTS = [20, 10, 5, 2, 0.00001]
 
