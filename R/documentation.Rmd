@@ -46,7 +46,7 @@ The following steps had taken place to get the original dataset from https://www
 
 *** If using Windows you may need to set up your PATH variables for installed items. You can do this in 'System Properties' -> 'Advanced' -> 'Environment Variables' -> 'Path' (Under 'System Variables') -> 'New' -> Paste path to the desired .exe file downloaded if not using pip install. If installing with Anaconda the installations will be a part of the Anaconda path, which should already be set when installing Anaconda. Hence why Anaconda is preferred to run this application.
 
-## Shortcomings / Future Prospects
+## Shortcomings / Future Development
 - Due to the time frame we only focused on 6 countries. If time had been extended we would have included all countries a user could submit. We would also make it so the user did not have to specify a country name. 
 - We would have liked to include filter options in the results page that allowed the user to target specific attributes like review score.
 - We would hae liked to have included amenities in the results info as well.
