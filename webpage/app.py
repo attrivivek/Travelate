@@ -23,35 +23,35 @@ def result():
 
         html = ''
 
-        if query.lower() in COUNTRIES:
-            output = analysis.get_results(query)
+        # if query.lower() in COUNTRIES:
+        output = analysis.get_results(query)
 
-            for index, row in output.iterrows():
-                html = (html  + "<a href='https://www.google.com/search?q=" + row['Hotel.Name'].strip() + "' target='_blank'>" + 
-                                    "<div class='hotel-row'>" +
-                                        "<div class='row'>" +
-                                            "<div class='col-sm-6 hotel-name'>" +
-                                                "<p class='name-label'>Hotel Name</p>" +
-                                                "<p>" + row['Hotel.Name'] + "</p>" +
-                                            "</div>" +
+        for index, row in output.iterrows():
+            html = (html  + "<a href='https://www.google.com/search?q=" + row['Hotel.Name'].strip() + "' target='_blank'>" + 
+                                "<div class='hotel-row'>" +
+                                    "<div class='row'>" +
+                                        "<div class='col-sm-6 hotel-name'>" +
+                                            "<p class='name-label'>Hotel Name</p>" +
+                                            "<p>" + row['Hotel.Name'] + "</p>" +
+                                        "</div>" +
 
-                                            "<div class='col-sm-3 hotel-score'>" +
-                                                "<p class='score-label'>Average Rating</p>" +
-                                                "<p>" + str( row['Average.Score'] ) + "</p>" +
-                                            "</div>" +
+                                        "<div class='col-sm-3 hotel-score'>" +
+                                            "<p class='score-label'>Average Rating</p>" +
+                                            "<p>" + str( row['Average.Score'] ) + "</p>" +
+                                        "</div>" +
 
-                                            "<div class='col-sm-3 hotel-review-count'>" +
-                                                "<p class='count-label'>Number of Reviews</p>" +
-                                                "<p>" + str( row['Total.Reviews'] ) + "</p>" +
-                                            "</div>" +
+                                        "<div class='col-sm-3 hotel-review-count'>" +
+                                            "<p class='count-label'>Number of Reviews</p>" +
+                                            "<p>" + str( row['Total.Reviews'] ) + "</p>" +
+                                        "</div>" +
 
-                                            "<div class='col-sm-12 hotel-address'>" +
-                                                "<p><span class='address-label'>Address: </span>" + row['Hotel.Address'] + "</p>" +
-                                            "</div>" +
-                                        "</div>"
-                                    "</div><hr>" +
-                                "</a>")
-        else:
-            html = '<p style="text-align: center;">Please use one of the listed country names in your query: Netherlands, Austria, France, Italy, Kingdom (United Kingdom), or Spain</p>'
+                                        "<div class='col-sm-12 hotel-address'>" +
+                                            "<p><span class='address-label'>Address: </span>" + row['Hotel.Address'] + "</p>" +
+                                        "</div>" +
+                                    "</div>"
+                                "</div><hr>" +
+                            "</a>")
+        # else:
+            # html = '<p style="text-align: center;">Please use one of the listed country names in your query: Netherlands, Austria, France, Italy, Kingdom (United Kingdom), or Spain</p>'
 
         return render_template( 'result.html', output = html )

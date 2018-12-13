@@ -36,7 +36,7 @@ def get_results(query):
     ranker = metapy.metapy.index.OkapiBM25()
 
     for result in ranker.score(idx, query, 10):
-        print hotel[hotel['Hotel.Name'] == idx.metadata(result[0]).get('name')]
+        print (hotel[hotel['Hotel.Name'] == idx.metadata(result[0]).get('name')])
 
     ret_values = d_hotel.filter(['Hotel.Name','Average.Score','Total.Reviews', 'Hotel.Address'], axis=1)
 
