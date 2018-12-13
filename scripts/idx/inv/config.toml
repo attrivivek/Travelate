@@ -1,0 +1,21 @@
+index = "idx"
+corpus = "line.toml"
+stop-words = "stopwords.txt"
+dataset = "hotels"
+prefix = "."
+[[analyzers]]
+	crf-prefix = "crf"
+	ngram = 1
+	method = "ngram-word"
+	[[analyzers.filter]]
+		type = "icu-tokenizer"
+	[[analyzers.filter]]
+		type = "ptb-normalizer"
+[[analyzers]]
+	crf-prefix = "crf"
+	ngram = 2
+	method = "ngram-word"
+	[[analyzers.filter]]
+		type = "icu-tokenizer"
+	[[analyzers.filter]]
+		type = "ptb-normalizer"

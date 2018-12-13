@@ -1,47 +1,56 @@
-####
-#Imports 
 import pandas as pd
 
-import metapy
+HOTEL_WITH_SCORING = "../data/aggregated_hotels.csv"
+COUNTRIES          = ["Netherlands", "Austria", "France", "Italy", "Kingdom", "Spain"]
 
-####
-#vars
-HOTEL_WITH_SCORING = "../data/hotels_4_with_review_score.csv"
+d_hotel = pd.read_csv(HOTEL_WITH_SCORING)
 
-AGG_HOTELS = "../data/aggregated_hotels.csv"
+def get_tokenizers(query):
+    # Create temp pandas dataframe
 
-#def get_analysis(hotel_data, query, country):
-    # hotel_data = hotel_data[hotal_data == country]
-        # Search 10,000k rows
+    country_tokens = []
 
-    # return top 20 
+    for word in query.replace(',',' ').split():
+        if word in COUNTRIES:
+            country_tokens.append(word)
+
+    return country_tokens
+
+    # Instead of returning tokens return rows that have country name found. Use tokens to select rows
+
+def check_tags(query, country_dataframe):
+    # Create temp pandas dataframe
+
+    # for every hotel row
+        # check if query contains tags for that hotel
+            # If so add hotel row to pandas dataframe
+
+    # tags_dataframe = country_dataframe[any(tag in query for tag in country_dataframe['Tags'])]
+
+    #tags_dataframe = country_dataframe[any(tag in query for tag in country_dataframe['Tags'].str.replace(',]\'',' ').split().tolist())]
+
+    # return temp pandas dataframe that has rows in which tags are in query
+
+
+    return tags_dataframe
 
 def get_results(query):
-    hotel = pd.read_csv(AGG_HOTELS)
 
-    # hotel = pd.read_csv(AGG_HOTELS)
 
-    # idx = metapy.index.make_inverted_index('../scripts/config.toml')
-    #ret_values = get_analysis(d_hotel, query, country)
+    # If update get_tokenizers update this variable
+    country_dataframe = d_hotel[(d_hotel['Country']).isin(get_tokenizers(query))]
 
-    # idx = metapy.metapy.index.make_inverted_index('config.toml')
 
-    ret_values = hotel.sort_values(by = ['Overall.Score'], ascending = False )
+
+    #tags_dataframe    = check_tags(query, country_dataframe)
+
+    # At this point you will have pandas dataframe with rows that match by country and tag
+    # Use this pandas dataframe to select rows with best score and return
+    # Make sure the pandas dataframe at this point is similar to the dataframe from HOTEL_WITH_SCORING
+
+    ret_values = country_dataframe.sort_values( by = ['Overall.Score'], ascending = False )
     ret_values = ret_values.head(20)
 
-    # query = metapy.index.Document()
-    # query.content("austria")
-
-    # ranker = metapy.index.OkapiBM25()
-
-    # for result in ranker.score(idx, query, 10):
-    #     print (hotel[hotel['Hotel.Name'] == idx.metadata(result[0]).get('name')])
-
-    # ret_values = d_hotel.filter(['Hotel.Name','Average.Score','Total.Reviews', 'Hotel.Address'], axis=1)
-
-    ret_values['Hotel.Name'] = ret_values['Hotel.Name'].astype(str)
     ret_values['Average.Score'] = ret_values['Average.Score'].astype(str)
-    ret_values['Total.Reviews'] = ret_values['Total.Reviews'].astype(str)
-    ret_values['Hotel.Address'] = ret_values['Hotel.Address'].astype(str)
-    ret_values['Overall.Score'] = ret_values['Overall.Score'].astype(str)
+
     return ret_values
