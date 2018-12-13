@@ -8,7 +8,7 @@ def get_tokenizers(query):
 
     country_tokens = []
 
-    for word in query.split():
+    for word in query.replace(',',' ').split():
         if word in COUNTRIES:
             country_tokens.append(word)
 
