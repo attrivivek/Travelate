@@ -12,7 +12,8 @@ output: html_document
 - The result page will also have a button that allows the user to go back to the input page to search using a new query.
 
 ## Pre-Processing
-The following steps had taken place to get the original dataset from https://www.kaggle.com/jiashenliu/515k-hotel-reviews-data-in-europe/home to the one used in the application:
+The following steps had taken place to get the original dataset from https://www.kaggle.com/jiashenliu/515k-hotel-reviews-data-in-europe/home to the one used in the application:  
+
 - Select Variables of interest, which were the following: Hotel Address, Tags, Reviewer Score, Total Reviews, Hotel Name, Average Score, Negative Review, Positive Review, Days Since Review, Negative Review Score, Positive Review Score
 - Normalize the Average Score and the Reviewer Score
 - Transform data, like days since review from a string to an integer or tags from a string into an array
