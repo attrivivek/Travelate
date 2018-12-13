@@ -52,3 +52,4 @@ The following steps had taken place to get the original dataset from https://www
 - We were not able to figure out how to get a Flask function to render results in real time on the same page as the input. With given time we would have liked to add this functionality as well. Maybe even have the results update as the user types.
 - We also looked into adding nearby hotels as an option on the results page for thre given hotels returned from the user's query.
 - We owuld have liked to explore metapy further to implement potentially more powerful algorithms for retrieval. Even consult other research papers for state-of-the-art retrieval methods.
+- We attempted to use metapy, but ran into issues getting metapy to return a pandas dataframe and also to work on the Flask server.
