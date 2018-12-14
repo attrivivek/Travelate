@@ -244,4 +244,3 @@ agg.df[, "Overall.Score"] = sapply( agg.df[, 'Overall.Score'], normalization )
 write.csv( agg.df, file = "../data/aggregated_hotels_2.csv", row.names = FALSE )
 
 ```
-
