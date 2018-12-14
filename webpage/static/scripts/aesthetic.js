@@ -1,11 +1,11 @@
 (function($, window, document) {
     $(document).ready(function () {
         $(".hotel-score p:nth-child(2), .hotel-overall-score p:nth-child(2)").each(function() {
-            if ( parseFloat( $(this).text() ) >= 0.80 ) {
+            if ( parseInt( $(this).text() ) >= 80 ) {
                 $(this).css("color", "green");
             }
 
-            else if ( parseFloat( $(this).text() ) < 0.80 && parseFloat( $(this).text() ) > 0.6 ) {
+            else if ( parseInt( $(this).text() ) < 80 && parseInt( $(this).text() ) > 60 ) {
                 $(this).css("color", "orange");
             }
 
