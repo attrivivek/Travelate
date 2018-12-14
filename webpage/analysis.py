@@ -32,7 +32,7 @@ def check_tags(query, country_dataframe):
         if any( tag in query for tag in row.Tags ):
             query_indexes.append( index )
 
-    return country_dataframe.shape
+    return query_indexes
 
 def get_results(query):
     country_dataframe = d_hotel[(d_hotel['Country']).isin(get_tokenizers(query))]
