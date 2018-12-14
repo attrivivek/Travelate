@@ -7,6 +7,7 @@ COUNTRIES          = ["Netherlands", "Austria", "France", "Italy", "Kingdom", "S
 
 d_hotel = pd.read_csv(HOTEL_WITH_SCORING)
 
+
 def get_tokenizers(query):
     # Create temp pandas dataframe
 
@@ -37,23 +38,30 @@ def check_tags(query, country_dataframe):
 
     return tags_dataframe
 
-def get_results(query):
+
+    # print any(tag in query for tag in country_dataframe['Tags'].apply(f))
+    #
+    # tags_dataframe = country_dataframe[any(tag in query for tag in country_dataframe['Tags'].apply(f))]
+    #
+    # # return temp pandas dataframe that has rows in which tags are in query
+    #
+    #
+    # return tags_dataframe
+
+# If update get_tokenizers update this variable
+country_dataframe = d_hotel[(d_hotel['Country']).isin(get_tokenizers("Solo Austria"))]
+
+tags_dataframe = check_tags("Austria", country_dataframe)
+
+# At this point you will have pandas dataframe with rows that match by country and tag
+# Use this pandas dataframe to select rows with best score and return
+# Make sure the pandas dataframe at this point is similar to the dataframe from HOTEL_WITH_SCORING
+
+ret_values = tags_dataframe.sort_values(by=['Overall.Score'], ascending=False)
+ret_values = ret_values.head(20)
+
+ret_values['Average.Score'] = ret_values['Average.Score'].astype(str)
+
+print ret_values
 
 
-    # If update get_tokenizers update this variable
-    country_dataframe = d_hotel[(d_hotel['Country']).isin(get_tokenizers(query))]
-
-
-
-    tags_dataframe    = check_tags(query, country_dataframe)
-
-    # At this point you will have pandas dataframe with rows that match by country and tag
-    # Use this pandas dataframe to select rows with best score and return
-    # Make sure the pandas dataframe at this point is similar to the dataframe from HOTEL_WITH_SCORING
-
-    ret_values = tags_dataframe.sort_values( by = ['Overall.Score'], ascending = False )
-    ret_values = ret_values.head(20)
-
-    ret_values['Average.Score'] = ret_values['Average.Score'].astype(str)
-
-    return ret_values
