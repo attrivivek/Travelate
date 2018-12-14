@@ -51,7 +51,6 @@ def get_results(query):
 
     ret_values = tags_dataframe.sort_values( by = ['Overall.Score'], ascending = False )
     ret_values = ret_values.head(20)
-
-    ret_values['Average.Score'] = ret_values['Average.Score'].astype(str)
+    ret_values = tags_dataframe.sort_values( by = ['Average.Score'], ascending = False )
 
     return ret_values

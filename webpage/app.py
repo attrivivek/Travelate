@@ -36,7 +36,7 @@ def result():
 
                                             "<div class='col-sm-3 hotel-score'>" +
                                                 "<p class='score-label'>Average Rating</p>" +
-                                                "<p>" + str( row['Average.Score'] ) + "</p>" +
+                                                "<p>" + str( round(row['Average.Score'], 2) ) + "</p>" +
                                             "</div>" +
 
                                             "<div class='col-sm-3 hotel-review-count'>" +
