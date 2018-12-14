@@ -57,6 +57,6 @@ def result():
                                     "</div><hr>" +
                                 "</a>")
         else:
-            html = '<p style="text-align: center;">Please use one of the listed country names in your query: Netherlands, Austria, France, Italy, Kingdom (United Kingdom), or Spain</p>'
+            html = '<p style="text-align: center;">Looks like you had a typo or searched for a hotel that is not in our database! Please try your search again.</p>'
 
         return render_template( 'result.html', output = html )
