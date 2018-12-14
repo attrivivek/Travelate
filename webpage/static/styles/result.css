@@ -27,7 +27,8 @@ Table
 }
 
 .hotel-score p,
-.hotel-review-count p {
+.hotel-review-count p,
+.hotel-overall-score p {
     font-weight: 700;
 }
 
@@ -61,6 +62,7 @@ button#reset-search a {
 .name-label,
 .score-label,
 .count-label,
+.overall-label,
 .address-label {
     font-weight: 700;
     color:     #7e7e7e;
