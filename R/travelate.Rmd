@@ -229,3 +229,19 @@ write.csv( df.4, file = "../data/hotels_5.csv", row.names = FALSE )
 
 ```
 
+```{r}
+
+agg.df  <- read.csv('../data/aggregated_hotels.csv')
+overall <- agg.df[, "Overall.Score"]
+
+normalization <- function(x)
+{
+  x <- ( x - min(overall) ) / ( max(overall) - min(overall) )
+}
+
+agg.df[, "Overall.Score"] = sapply( agg.df[, 'Overall.Score'], normalization )
+
+write.csv( agg.df, file = "../data/aggregated_hotels_2.csv", row.names = FALSE )
+
+```
+
