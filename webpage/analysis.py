@@ -13,8 +13,8 @@ def get_tokenizers(query):
     country_tokens = []
 
     for word in query.replace(',',' ').split():
-        if word in COUNTRIES:
-            country_tokens.append(word)
+        if word.capitalize() in COUNTRIES:
+            country_tokens.append( word.capitalize() )
 
     return country_tokens
 
@@ -28,6 +28,7 @@ def check_tags(query, country_dataframe):
             # If so add hotel row to pandas dataframe
 
     # tags_dataframe = country_dataframe[any(tag in query for tag in country_dataframe['Tags'])]
+    # tags_dataframe = country_dataframe
 
     f = lambda x: re.split(',|[|]| ', x)
 
@@ -42,9 +43,6 @@ def get_results(query):
 
     # If update get_tokenizers update this variable
     country_dataframe = d_hotel[(d_hotel['Country']).isin(get_tokenizers(query))]
-
-
-
     tags_dataframe    = check_tags(query, country_dataframe)
 
     # At this point you will have pandas dataframe with rows that match by country and tag
