@@ -18,8 +18,10 @@ The following steps had taken place to get the original dataset from https://www
 - Remove reviews in the positive and negative reviews columns that were adding no value. Examples include the following: none, no, nil, nothing, none at all, etc.
 - Run the reviews columns through a sentiment analysis scoring algorithm
 - Normalize the Negative reviews columns to be between -1 and 0 and Positive reviews columns to be between 0 and 1 
-- Aggregate the reviews by hotel and deriving an overall score based on the normalized positive and negative review scores.
+- Aggregate the reviews by hotel and deriving an overall score based on the normalized positive, negative review scores and factors like reviewer rating and number of reviews
+- Different weights were used for different factors to keep the scores realistic; e.g higher weight to negative review score than positive review score etc., see aggregate_data.py for more details
 - Normalizing the Overall Score the same way the positive and negative review scores were normalized; they range between 0 and 1
+- Create an inverted index of tags aggregated by hotel using metapy library after removing stopwords and using analyzer with bigram, icu-tokenizer and ptb-normalizer, see search_indexing.py for more details.
 
 ## Application 
 - The user begins with index.html, which is served by app.py using the Flask library
@@ -60,6 +62,7 @@ If installing with Anaconda the installations will be a part of the Anaconda pat
 - Although we began this implementation, we would like to have tags in the index.html page that the user could select, and then those options would be appended to the query to sharpen the search results further.
 - We were not able to figure out how to get a Flask function to render results in real time on the same page as the input. With given time we would have liked to add this functionality as well. Maybe even have the results update as the user types.
 - We also looked into adding nearby hotels as an option on the results page for thre given hotels returned from the user's query.
-- The dataset we worked with included tags which were too ambiguous for querying. The app utilizes country as a query to search by, but given amenities for these hotels we would be able to develope a more robust querying system that not only targets hotels by country, but by amenities that are pertinent to the query.
+- The dataset we worked with included tags which were too ambiguous for querying. The app utilizes country as a query to search by, but given amenities for these hotels we would be able to develop a more robust querying system that not only targets hotels by country, but by amenities that are pertinent to the query.
+- Could'nt use metapy because of environment related issue, But would've used sophisticated and state-of-the-art algorithms like OkapiBM25 for user search query ranking and sorting.
 
 ## Tools / Research Papers

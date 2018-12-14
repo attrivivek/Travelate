@@ -16,26 +16,50 @@ def get_tokenizers(query):
 
     return country_tokens
 
-# def check_tags(query, country_dataframe):
+def check_tags(query, country_dataframe):
 
-#     f = lambda x: re.split(',|[|]| ', x)
+    '''
+    Metapy code for ranking user query
+    '''
 
-#     # for index, tags in enumerate(country_dataframe['Tags'].apply(f)):
-#     #     if any(tag in query for tag in tags):
-#     #         tags_dataframe = country_dataframe.loc[:index + 1]
+    idx = metapy.index.make_inverted_index('config.toml')
 
-#     # return tags_dataframe
+    query = metapy.index.Document()
+    query.content("1 room France")
 
-#     query_indexes = []
+    ranker = metapy.index.OkapiBM25()
 
-#     for index, row in country_dataframe.iterrows():
-#         if any( tag in query for tag in row.Tags ):
-#             query_indexes.append( index )
+    for index, result in enumerate(ranker.score(idx, query)):
+        if country_dataframe['Hotel.Name'] == idx.metadata(result[0]).get('name'):
+            tags_dataframe = country_dataframe.loc[:index + 1]
 
-#     if len( query_indexes ) > 0:
-#         return query_indexes
-#     else:
-#         return country_dataframe
+    return tags_dataframe
+
+def check_tags(query, country_dataframe):
+
+    '''
+    Searching tokenized query in Tags
+    '''
+
+    f = lambda x: re.split(',|[|]| ', x)
+
+    for index, tags in enumerate(country_dataframe['Tags'].apply(f)):
+        if any(tag in query for tag in tags):
+            tags_dataframe = country_dataframe.loc[:index + 1]
+
+    return tags_dataframe
+
+    query_indexes = []
+
+    for index, row in country_dataframe.iterrows():
+        if any( tag in query for tag in row.Tags ):
+            query_indexes.append( index )
+
+    if len( query_indexes ) > 0:
+        return query_indexes
+    else:
+        return country_dataframe
+
 
 def get_results(query):
     country_dataframe = d_hotel[(d_hotel['Country']).isin(get_tokenizers(query))]
